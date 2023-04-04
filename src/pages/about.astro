@@ -1,23 +1,10 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "About Me";
+const skills = ["Back-end (Cpp)", "Front-end (JS)", "AI (Python)"];
 ---
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>BJXX - About Me</title>
-  </head>
-  <body>
-    <a href='/'>Home</a>
-    <a href='/blogs/'>Blog</a>
-    <a href='/about/'>About</a>
-    <h1>About Me</h1>
-    <ul>
-      <li>Student</li>
-      <li>Post Front-end Engineer</li>
-      <li>AIer</li>
-    </ul>
-  </body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <ul>
+    {skills.map((x) => <li class="skill">{x}</li>)}
+  </ul>
+</BaseLayout>

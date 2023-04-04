@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+const postList = await Astro.glob("./*.md").then(postList => postList.filter(post => !post.frontmatter.hidden || post.frontmatter.hidden == false));
+postList.sort((a, b) => {
+    if (b.frontmatter.pubDate.slice(0, 10) > a.frontmatter.pubDate.slice(0, 10)) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }) 
+const pageTitle = "Blog";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <ul>
+    {postList.map(post => <BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate} />)}
+  </ul>
+</BaseLayout>

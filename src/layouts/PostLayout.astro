@@ -1,0 +1,17 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+<style>
+  .post-tag {
+    margin: 0 0.2rem;
+  }
+</style>
+<BaseLayout pageTitle={frontmatter.title}>
+  <p><em>{frontmatter.description}</em></p>
+  <p>{frontmatter.author}  {frontmatter.pubDate.slice(0, 10)}</p>
+  <p>Tags: {frontmatter.tags.map(tag => <span class='post-tag'><a href=`../tags/${tag}`>{tag}</a></span>)}</p>
+  <p><a href="./">back</a></p>
+  <slot />
+  <p><a href="./">back</a></p>
+</BaseLayout>
